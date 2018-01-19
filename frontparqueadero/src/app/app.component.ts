@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
  this.http.post('http://localhost:8888/api/salidavehiculo',this.model.placaSalida)
       .subscribe(
         res => {
-          alert("El valor a pagar es de:" +  res.valor)
+          alert("Mensaje:" + res.mensaje +"El valor a pagar es de:" +  res.valor)
           location.reload();
         }
       );
