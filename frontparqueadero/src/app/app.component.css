@@ -1,0 +1,45 @@
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
+.dos-columnas {
+  width: 40%;
+  margin-left: 5%;
+  margin-top: 20px;
+  float: left;
+  padding: 10px 40px;
+  border: 2px solid black;
+  border-radius: 29px;
+  box-shadow: 2px 2px 25px 2px;
+}
+
+.tabla-contenedor {
+    display: block;
+    width: 60%;
+    margin-left: 20%;
+    float: left;
+    margin-top: 20px;
+    padding: 20px;
+  	border: 2px solid black;
+    border-radius: 29px;
+    box-shadow: 2px 2px 25px 2px;
+}
+.mat-header-cell {
+    font-weight: bold;
+}
+.titulo-formulario {
+	font-weight: bold;
+}
+.form-group {
+    margin-bottom: 0;
+}
+

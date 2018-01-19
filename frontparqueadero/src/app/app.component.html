@@ -1,0 +1,98 @@
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="dos-columnas">
+      <h4 class="titulo-formulario">INGRESAR VEHICULOS</h4>
+    <div class="form-group">
+      <label for="placa">* Placa</label> <br>
+      <input type="text"  maxlength="6" class="form-control" id="placa" required [(ngModel)]="model.placa" name="placa" #placa="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
+      <div [hidden]="placa.valid || placa.pristine" class="alert alert-danger">
+        Campo Requerido
+      </div>
+      <br>
+    </div>
+    
+    <div class="form-group">
+      <label for="nomPropietario">* Nombre del propietario</label> <br>
+      <input type="text" maxlength="50" class="form-control" id="nomPropietario" required [(ngModel)]="model.nomPropietario" name="nomPropietario" #nomPropietario="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
+      <div [hidden]="nomPropietario.valid || nomPropietario.pristine" class="alert alert-danger">
+        Campo Requerido
+      </div>
+    </div>
+ <br>
+   <div class="form-group">
+      <label for="cilindraje">* Cilindraje (Campo Obligatorio para motos)</label> <br>
+      <input type="number" class="form-control" id="cilindraje" max="5" [(ngModel)]="model.cilindraje" name="cilindraje" #cilindraje="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
+    </div>
+
+<br>
+
+  <div class="form-group">
+    <label>Tipo de Vehiculo</label><br>
+    <select class="form-control" id="comboTipo" required [(ngModel)]="model.comboTipo" name="comboTipo" #comboTipo="ngModel">
+      <option value="">Tipo de Vehiculo</option>
+      <option value="1">Moto</option>
+      <option value="2">Carro</option>
+    </select>
+  </div>
+
+
+<br>
+
+    <button type="submit" class="btn" [disabled]="!placa.valid || !nomPropietario.valid || !comboTipo.valid">Ingresar Vehiculo</button>
+
+</div>
+
+
+<div class="dos-columnas">
+<h4 class="titulo-formulario" >SALIDA VEHICULOS</h4>
+
+  
+    <div class="form-group">
+      <label for="placaSalida">Placa</label> <br>
+      <input type="text" class="form-control" id="placaSalida" required [(ngModel)]="model.placaSalida" name="placaSalida" #placaSalida="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
+      <div [hidden]="placaSalida.valid || placaSalida.pristine" class="alert alert-danger">
+        Campo Requerido
+      </div>
+      <br> <br>
+    </div>
+
+<br>
+
+  <button class="btn" [disabled]="!placaSalida.valid" (click)="onClick()">Salir Vehiculo</button>
+
+
+</div>
+
+
+
+  </form>
+
+</div>
+
+
+
+<br>
+
+<div class="tabla-contenedor">
+  <h4 class="titulo-formulario">VEHICULOS EN EL PARQUEADERO</h4>
+  <mat-table [dataSource]="myDataSource">
+    <ng-container matColumnDef="Placa">
+      <mat-header-cell *matHeaderCellDef> Placa </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.placa}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Propietario">
+      <mat-header-cell *matHeaderCellDef> Propietario </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.propietario}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Cilindraje">
+      <mat-header-cell *matHeaderCellDef> Cilindraje </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.cilindraje}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="TipoVehiculo">
+      <mat-header-cell *matHeaderCellDef> Tipo Vehiculo </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.tiposVehiculo.descripcion}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['Placa', 'Propietario', 'Cilindraje', 'TipoVehiculo']"></mat-header-row>
+  <mat-row *matRowDef="let myRowData; columns: ['Placa', 'Propietario', 'Cilindraje', 'TipoVehiculo']"></mat-row>
+  </mat-table>
+</div>
