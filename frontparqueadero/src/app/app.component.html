@@ -20,8 +20,8 @@
     </div>
  <br>
    <div class="form-group">
-      <label for="cilindraje">* Cilindraje (Campo Obligatorio para motos)</label> <br>
-      <input type="number" class="form-control" id="cilindraje" max="5" [(ngModel)]="model.cilindraje" name="cilindraje" #cilindraje="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
+      <label for="cilindraje">* Cilindraje</label> <br>
+      <input type="number" class="form-control" id="cilindraje" max="5" required [(ngModel)]="model.cilindraje" name="cilindraje" #cilindraje="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
     </div>
 
 <br>
@@ -38,7 +38,7 @@
 
 <br>
 
-    <button type="submit" class="btn" [disabled]="!placa.valid || !nomPropietario.valid || !comboTipo.valid">Ingresar Vehiculo</button>
+    <button type="submit" class="btn" [disabled]="!placa.valid || !nomPropietario.valid || !cilindraje.valid  || !comboTipo.valid">Ingresar Vehiculo</button>
 
 </div>
 

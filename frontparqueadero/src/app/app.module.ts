@@ -11,7 +11,6 @@ import { NgForOf } from '@angular/common';
 
 import { AppComponent } from './app.component';
 
-
 @NgModule({
   declarations: [
     AppComponent

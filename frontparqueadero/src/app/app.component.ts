@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     nomPropietario: "", 
     placaSalida: "",
     placa: "",
-    cilindraje: "",
+    cilindraje: "0",
     comboTipo: ""
 
 
@@ -40,6 +40,10 @@ export class AppComponent implements OnInit {
         validators: Validators.required,
         updateOn: 'submit'
       }),
+      cilindraje: new FormControl('', {
+        validators: Validators.required,
+        updateOn: 'submit'
+      }),
       placa: new FormControl('', {
         validators: Validators.required,
         updateOn: 'submit'
@@ -60,6 +64,7 @@ export class AppComponent implements OnInit {
  this.http.post('http://localhost:8888/api/ingresarvehiculo', {
       "placa": this.model.placa,
       "propietario": this.model.nomPropietario,
+      "cilindraje": this.model.cilindraje,
       "tipoVehiculo": this.model.comboTipo
     },{ responseType: 'text' })
       .subscribe(
@@ -77,7 +82,11 @@ export class AppComponent implements OnInit {
  this.http.post('http://localhost:8888/api/salidavehiculo',this.model.placaSalida)
       .subscribe(
         res => {
-          alert("Mensaje:" + res.mensaje +"El valor a pagar es de:" +  res.valor)
+          if(res.valor != 0 ){
+            alert("Mensaje:" + res.mensaje + " " + "El valor a pagar es de:" +  res.valor)
+          }else{
+            alert("Mensaje:" + res.mensaje + " ")
+          }
           location.reload();
         }
       );
